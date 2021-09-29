@@ -19,15 +19,60 @@ public class TicTacToe {
 		
 		char[][] board = generateBoard(size);
 		showBoard(board);
+		System.out.println("Press 0 for PVP or Press 1 for Singleplayer:");
+		int cpuPvp= sc.nextInt();
+		char player = '-';
+		char cpu = '-';
+		while(cpuPvp > 1 || cpuPvp < 0) {
+			System.out.println("Wrong Choice");
+			System.out.println("Press 0 for PVP or Press 1 for Singleplayer:");
+			cpuPvp = sc.nextInt();
+		}
+		
+		if(cpuPvp > 0) {
+			System.out.println("Press 0 for X or Press 1 for O:");
+			int choice = sc.nextInt();
+			while(choice > 1 || choice < 0) {
+				System.out.println("Wrong Choice");
+				System.out.println("Press 0 for X or Press 1 for O:");
+				System.out.println();
+				choice = sc.nextInt();
+			}
+			
+			if(choice > 0) {
+				player = 'O';
+				cpu = 'X';
+			}
+				
+				
+			else {
+				player = 'X';
+				cpu = 'O';
+			}
+				
+		}
 		System.out.println("First player will be chosen randomly...");
 		Random r = new Random();
 		int first = r.nextInt(2);
 		char currentPlayer = (first == 0) ? 'X' : 'O';
 		System.out.println("First player to play isss " + currentPlayer);
+		if(currentPlayer == player) 
+			showBoard(board);
 		boolean someoneWon = false;
 		boolean draw = false;
 		while(!someoneWon && !draw) {
-			makeMove(board, currentPlayer);
+			if(cpuPvp > 0) {
+				if(currentPlayer == player) {
+					makeMove(board, currentPlayer);
+				}
+				else {
+					System.out.println("CPU Turn:");
+					cpuMove(board, cpu);
+				}
+					
+			}
+			else
+				makeMove(board, currentPlayer);
 			showBoard(board);
 			someoneWon = didSomeoneWin(board, currentPlayer);
 			draw = isDraw(board);
@@ -37,7 +82,14 @@ public class TicTacToe {
 		currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
 		
 		if(someoneWon) {
-			System.out.println("Winner is Player " + currentPlayer + ". Congratulations!");
+			if(cpuPvp > 0) {
+				if(currentPlayer == cpu)
+					System.out.println("Winner is CPU. You lost!");
+				else
+					System.out.println("Winner is Player " + currentPlayer + ". You won!");
+			}
+			else
+				System.out.println("Winner is Player " + currentPlayer + ". Congratulations!");
 		}
 		else if(draw){
 			System.out.println("Its a draw. Booring..");
@@ -54,7 +106,18 @@ public class TicTacToe {
 		}
 	}
 	
-	private static char[][] makeMove(char[][] board, char currentPlayer){
+	private static void cpuMove(char[][] board, char cpuMarker){
+		Random r = new Random();
+		int row = r.nextInt(board.length);
+		int col = r.nextInt(board.length);
+		while(board[row][col] != '-') {
+			row = r.nextInt(board.length);
+			col = r.nextInt(board.length);
+		}
+		board[r.nextInt(board.length)][r.nextInt(board.length)] = cpuMarker;
+	}
+	
+	private static void makeMove(char[][] board, char currentPlayer){
 		System.out.print("Player " + currentPlayer + ", which row do you want to place your mark in (1-" + board.length + ")?");
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
@@ -89,8 +152,6 @@ public class TicTacToe {
 		}
 		
 		board[row-1][col-1] = currentPlayer;
-		
-		return board;
 	}
 	
 	private static boolean didSomeoneWin(char[][] board, char currentPlayer) {
