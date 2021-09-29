@@ -64,7 +64,6 @@ public class TicTacToe {
 					makeMove(board, currentPlayer);
 				}
 				else {
-					System.out.println("CPU Turn:");
 					cpuMove(board, cpu);
 				}
 					
@@ -112,7 +111,8 @@ public class TicTacToe {
 			row = r.nextInt(board.length);
 			col = r.nextInt(board.length);
 		}
-		board[r.nextInt(board.length)][r.nextInt(board.length)] = cpuMarker;
+		board[row][col] = cpuMarker;
+		System.out.println("CPU chose row " + (row+1) + " and column " + (col+1));
 	}
 	
 	private static void makeMove(char[][] board, char currentPlayer){
