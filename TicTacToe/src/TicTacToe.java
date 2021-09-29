@@ -35,7 +35,6 @@ public class TicTacToe {
 			while(choice > 1 || choice < 0) {
 				System.out.println("Wrong Choice");
 				System.out.println("Press 0 for X or Press 1 for O:");
-				System.out.println();
 				choice = sc.nextInt();
 			}
 			
