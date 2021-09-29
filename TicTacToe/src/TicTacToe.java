@@ -43,13 +43,11 @@ public class TicTacToe {
 				player = 'O';
 				cpu = 'X';
 			}
-				
-				
+					
 			else {
 				player = 'X';
 				cpu = 'O';
-			}
-				
+			}		
 		}
 		System.out.println("First player will be chosen randomly...");
 		Random r = new Random();
