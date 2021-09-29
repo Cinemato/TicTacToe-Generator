@@ -58,13 +58,10 @@ public class TicTacToe {
 		boolean draw = false;
 		while(!someoneWon && !draw) {
 			if(cpuPvp > 0) {
-				if(currentPlayer == player) {
+				if(currentPlayer == player)
 					makeMove(board, currentPlayer);
-				}
-				else {
-					cpuMove(board, cpu);
-				}
-					
+				else
+					cpuMove(board, cpu);	
 			}
 			else
 				makeMove(board, currentPlayer);
