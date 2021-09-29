@@ -64,8 +64,21 @@ public class TicTacToe {
 		System.out.println();
 		int col = sc.nextInt();
 		
+		while(row > board.length || row <= 0 || col > board.length || col <= 0) {
+			System.out.print("Wrong placement. Please pick again.");
+			System.out.println();
+			System.out.print("Player " + currentPlayer + ", which row do you want to place your mark in (1-" + board.length + ")?");
+			System.out.println();
+			row = sc.nextInt();
+			
+			System.out.print("Player " + currentPlayer + ", which column in row " + row + " do you want to place your mark in (1-" + board.length + ")?");
+			System.out.println();
+			col = sc.nextInt();
+		}
+		
 		while(board[row-1][col-1] != '-') {
 			System.out.print("This place is filled. Please pick again.");
+			System.out.println();
 			System.out.print("Player " + currentPlayer + ", which row do you want to place your mark in (1-" + board.length + ")?");
 			System.out.println();
 			row = sc.nextInt();
