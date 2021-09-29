@@ -154,6 +154,8 @@ public class TicTacToe {
 			for(int j = 0; j < board[i].length; j++) {
 				if(board[i][j] == currentPlayer)
 					equal--;
+				else
+					break;
 			}
 			if(equal == 0)
 				return true;
@@ -164,6 +166,8 @@ public class TicTacToe {
 			for(int j = 0; j < board[i].length; j++) {
 				if(board[j][i] == currentPlayer)
 					equal--;
+				else
+					break;
 			}
 			if(equal == 0)
 				return true;
@@ -173,6 +177,8 @@ public class TicTacToe {
 		for(int i = 0; i < board.length; i++) {
 			if(board[i][i] == currentPlayer)
 				equal--;
+			else
+				break;
 		}
 		
 		if(equal == 0)
@@ -183,6 +189,8 @@ public class TicTacToe {
 		for(int i = 0; i < board.length; i++) {
 			if(board[i][counter] == currentPlayer) 
 				equal--;
+			else
+				break;
 			counter--;
 		}
 		
