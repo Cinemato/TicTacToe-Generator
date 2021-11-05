@@ -146,6 +146,7 @@ public class TicTacToe {
 			}
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.print("Wrong placement. Please pick again.");
+			System.out.println();
 			makeMove(board, currentPlayer);
 			return;
 		}
