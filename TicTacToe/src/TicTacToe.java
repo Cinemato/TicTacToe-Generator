@@ -132,16 +132,22 @@ public class TicTacToe {
 			col = sc.nextInt();
 		}
 		
-		while(board[row-1][col-1] != '-') {
-			System.out.print("This place is filled. Please pick again.");
-			System.out.println();
-			System.out.print("Player " + currentPlayer + ", which row do you want to place your mark in (1-" + board.length + ")?");
-			System.out.println();
-			row = sc.nextInt();
-			
-			System.out.print("Player " + currentPlayer + ", which column in row " + row + " do you want to place your mark in (1-" + board.length + ")?");
-			System.out.println();
-			col = sc.nextInt();
+		try {
+			while(board[row-1][col-1] != '-') {
+				System.out.print("This place is filled. Please pick again.");
+				System.out.println();
+				System.out.print("Player " + currentPlayer + ", which row do you want to place your mark in (1-" + board.length + ")?");
+				System.out.println();
+				row = sc.nextInt();
+				
+				System.out.print("Player " + currentPlayer + ", which column in row " + row + " do you want to place your mark in (1-" + board.length + ")?");
+				System.out.println();
+				col = sc.nextInt();
+			}
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.print("Wrong placement. Please pick again.");
+			makeMove(board, currentPlayer);
+			return;
 		}
 		
 		board[row-1][col-1] = currentPlayer;
