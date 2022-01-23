@@ -12,7 +12,7 @@ public class TicTacToe {
 		System.out.println();
 		int size = sc.nextInt();
 		while(size < 3){
-			System.out.println("Please choose a size bigger than 3.");
+			System.out.println("Please choose a size bigger than or equal to 3.");
 			size = sc.nextInt();
 		}
 		
